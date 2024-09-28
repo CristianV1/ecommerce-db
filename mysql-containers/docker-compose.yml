@@ -1,0 +1,27 @@
+version: '1.0'
+services:
+  product:
+    image: mysql:latest
+    container_name: product-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: productDB
+      MYSQL_USER: cristian
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3309:3306" 
+    volumes:
+      - ./product:/docker-entrypoint-initdb.d 
+
+  order:
+    image: mysql:latest
+    container_name: order-container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: orderDB
+      MYSQL_USER: cristian
+      MYSQL_PASSWORD: 1234
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./order:/docker-entrypoint-initdb.d 

@@ -1,0 +1,18 @@
+CREATE DATABASE IF NOT EXISTS orderDB;
+
+USE orderDB;
+
+CREATE TABLE IF NOT EXISTS `order`(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    orderDate TIMESTAMP NOT NULL
+);
+
+
+CREATE TABLE orderItems (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    orderId INT NOT NULL,
+    productId INT NOT NULL,
+    quantity INT NOT NULL,
+    priceAtTime DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (orderId) REFERENCES `order`(id)
+);
